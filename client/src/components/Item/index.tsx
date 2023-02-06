@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
-import { Theme } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../../theme";
@@ -10,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 interface ItemProps {
   item: Item;
-  width: number;
 }
 
 type Item = {
@@ -26,7 +24,7 @@ type Item = {
   };
 };
 
-function Item({ item, width }: ItemProps) {
+function Item({ item }: ItemProps) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
@@ -46,7 +44,7 @@ function Item({ item, width }: ItemProps) {
   } = image;
 
   return (
-    <Box width={width}>
+    <Box>
       <Box
         position="relative"
         onMouseOver={() => setIsHovered(true)}
@@ -61,7 +59,7 @@ function Item({ item, width }: ItemProps) {
           style={{ cursor: "pointer" }}
         />
         <Box
-          display={isHovered ? "blocked" : "none"}
+          display={isHovered ? "block" : "none"}
           position="absolute"
           bottom="10%"
           left="0"

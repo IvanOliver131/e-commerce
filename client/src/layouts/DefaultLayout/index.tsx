@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { CartMenu } from "../../components/CartMenu";
+import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
 
 function ScrollToTop() {
@@ -23,6 +24,7 @@ function DefaultLayout() {
         <Outlet />
       </div>
       <CartMenu />
+      <Footer />
     </Box>
   );
 }
