@@ -1,6 +1,5 @@
 'use strict';
-const strapi = require('@strapi/strapi');
-strapi(/* {...} */).start()
+
 module.exports = {
   /**
    * An asynchronous register function that runs before
