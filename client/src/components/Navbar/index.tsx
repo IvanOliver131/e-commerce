@@ -27,8 +27,8 @@ function Navbar() {
       alignItems="center"
       width="100%"
       height="60px"
-      bgcolor="rgba(255,255,255,0.95)"
-      color="black"
+      bgcolor="rgba(67, 42, 35, 0.95)"
+      color="white"
       position="fixed"
       top="0"
       left="0"
@@ -44,17 +44,17 @@ function Navbar() {
         <Box
           onClick={() => navigate("/")}
           sx={{ "&:hover": { cursor: "pointer" } }}
-          color={shades.secondary[500]}
+          color="white"
         >
-          ECOMMER
+          D'ROY
         </Box>
         <Box display="flex" justifyContent="space-between" columnGap="20px">
-          <IconButton sx={{ color: "black" }}>
+          {/* <IconButton sx={{ color: "white" }}>
             <SearchOutlined />
           </IconButton>
-          <IconButton sx={{ color: "black" }}>
+          <IconButton sx={{ color: "white" }}>
             <PersonOutline />
-          </IconButton>
+          </IconButton> */}
 
           <Badge
             badgeContent={cart.length}
@@ -72,14 +72,14 @@ function Navbar() {
           >
             <IconButton
               onClick={() => dispatch(setIsCartOpen())}
-              sx={{ color: "black" }}
+              sx={{ color: "white" }}
             >
               <ShoppingBagOutlined />
             </IconButton>
           </Badge>
-          <IconButton sx={{ color: "black" }}>
+          {/* <IconButton sx={{ color: "white" }}>
             <MenuOutlined />
-          </IconButton>
+          </IconButton> */}
         </Box>
       </Box>
     </Box>

@@ -86,9 +86,13 @@ function Item({ item }: ItemProps) {
             {/* BUTTON */}
             <Button
               onClick={() => dispatch(addToCart({ item: { ...item, count } }))}
-              sx={{ backgroundColor: shades.primary[300], color: "white" }}
+              sx={{
+                backgroundColor: shades.primary[300],
+                color: "white",
+                ":hover": { backgroundColor: shades.primary[500] },
+              }}
             >
-              Add to Cart
+              Adicionar
             </Button>
           </Box>
         </Box>

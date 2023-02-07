@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Tab, Tabs, Typography, useMediaQuery } from "@mui/material";
 
@@ -53,21 +53,24 @@ function ShoppingList() {
     getItems();
   }, []);
 
-  const topRatedItems = items.filter(
-    (item) => item.attributes.category === "topRated"
+  const portionsItems = items.filter(
+    (item) => item.attributes.category === "portions"
   );
-  const newArrivalsItems = items.filter(
-    (item) => item.attributes.category === "newArrivals"
+  const smashItems = items.filter(
+    (item) => item.attributes.category === "smash"
   );
-  const bestSellersItems = items.filter(
-    (item) => item.attributes.category === "bestSellers"
+  const smokedItems = items.filter(
+    (item) => item.attributes.category === "smoked"
+  );
+  const drinksItems = items.filter(
+    (item) => item.attributes.category === "drinks"
   );
 
   return (
     <Box width="80%" margin="80px auto">
       <Typography variant="h3" textAlign="center">
         {" "}
-        Our Featured <b>Products</b>
+        Todos os nossos <b>Produtos</b>
       </Typography>
       <Tabs
         textColor="primary"
@@ -84,9 +87,10 @@ function ShoppingList() {
         }}
       >
         <Tab label="ALL" value="all" />
-        <Tab label="NEW" value="newArrivals" />
-        <Tab label="BEST SELLERS" value="bestSellers" />
-        <Tab label="TOP RATED" value="topRated" />
+        <Tab label="SMASH" value="smash" />
+        <Tab label="SMOKED" value="smoked" />
+        <Tab label="PORTIONS" value="portions" />]
+        <Tab label="DRINKS" value="drinks" />
       </Tabs>
       <Box
         margin="0 auto"
@@ -100,16 +104,20 @@ function ShoppingList() {
           items.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "newArrivals" &&
-          newArrivalsItems.map((item) => (
+        {value === "smash" &&
+          smashItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "bestSellers" &&
-          bestSellersItems.map((item) => (
+        {value === "smoked" &&
+          smokedItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "topRated" &&
-          topRatedItems.map((item) => (
+        {value === "portions" &&
+          portionsItems.map((item) => (
+            <Item item={item} key={`${item.name}-${item.id}`} />
+          ))}
+        {value === "drinks" &&
+          drinksItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
       </Box>

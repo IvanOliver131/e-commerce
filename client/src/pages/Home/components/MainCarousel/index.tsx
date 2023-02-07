@@ -5,8 +5,8 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { shades } from "../../../../theme";
 
-import img from "../../../../assets/brooke-cagle-aVT8VkmzML4-unsplash.jpeg";
-import img2 from "../../../../assets/chris-ghinda-wK2ESlRRZQ8-unsplash.jpeg";
+import img from "../../../../assets/background_carousel_one.jpeg";
+import img2 from "../../../../assets/background_carousel_two.jpeg";
 
 const heroTextureImports = [img, img2];
 
@@ -74,14 +74,23 @@ function MainCarousel() {
             margin={isNonMobile ? undefined : "0 auto"}
             maxWidth={isNonMobile ? undefined : "240px"}
           >
-            <Typography color={shades.secondary[200]}>-- NEW ITEMS</Typography>
-            <Typography variant="h1">Summer Sale</Typography>
+            <Typography color={shades.secondary[200]}>
+              -- NOVOS ITEMS
+            </Typography>
+            <Typography
+              variant="h1"
+              textOverflow="ellipsis"
+              whiteSpace="nowrap"
+              overflow="hidden"
+            >
+              No Instagram
+            </Typography>
             <Typography
               fontWeight="bold"
               color={shades.secondary[300]}
               sx={{ textDecoration: "underline" }}
             >
-              Discover more
+              Descubra mais
             </Typography>
           </Box>
         </Box>

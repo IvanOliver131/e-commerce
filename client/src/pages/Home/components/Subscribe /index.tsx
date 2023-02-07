@@ -3,16 +3,17 @@ import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined
 import { useState } from "react";
 
 function Subscribe() {
-  const [email, setEmail] = useState("");
+  const [review, setReview] = useState("");
 
   return (
     <Box width="80%" margin="80px auto" textAlign="center">
       <IconButton>
         <MarkEmailReadOutlinedIcon fontSize="large" />
       </IconButton>
-      <Typography variant="h3">Subscribe To Our Newsletter</Typography>
+      <Typography variant="h3">REVIEWS</Typography>
       <Typography>
-        and receive $20 coupon for your first order when you checkout
+        Nos envie alguns pontos que gostaram e que devemos melhorar, para
+        criarmos uma ótima experiência
       </Typography>
       <Box
         p="2px 4px"
@@ -24,13 +25,13 @@ function Subscribe() {
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
-          placeholder="Enter email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          placeholder="Review"
+          onChange={(e) => setReview(e.target.value)}
+          value={review}
         />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <Typography sx={{ p: "10px", ":hover": { cursor: "pointer" } }}>
-          Subscribe
+          Enviar
         </Typography>
       </Box>
     </Box>

@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { CartMenu } from "../../components/CartMenu";
 import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
+import { shades } from "../../theme";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -17,7 +18,7 @@ function ScrollToTop() {
 
 function DefaultLayout() {
   return (
-    <Box margin="auto">
+    <Box margin="auto" bgcolor={shades.secondary[500]}>
       <Navbar />
       <ScrollToTop />
       <div>

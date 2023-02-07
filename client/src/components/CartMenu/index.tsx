@@ -73,7 +73,7 @@ function CartMenu() {
           {/* HEADER */}
           <FlexBox mb="15px">
             <Typography variant="h3">
-              SHOPPING BAG ({CartMenu.length})
+              CARRINHO DE COMPRAS ({cart.length})
             </Typography>
             <IconButton onClick={() => dispatch(setIsCartOpen())}>
               <CloseIcon />
@@ -167,7 +167,7 @@ function CartMenu() {
                 dispatch(setIsCartOpen());
               }}
             >
-              CHECKOUT
+              CONFIRMAR
             </Button>
           </Box>
         </Box>

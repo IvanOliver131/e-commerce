@@ -155,7 +155,7 @@ function Checkout() {
   }
 
   return (
-    <Box width="80%" m="100px auto">
+    <Box width="80%" m="60px auto" paddingY={5}>
       <Stepper activeStep={activeStep} sx={{ m: "20px 0" }}>
         <Step>
           <StepLabel>Billing</StepLabel>

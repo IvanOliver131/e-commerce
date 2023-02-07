@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../../theme";
 import { addToCart } from "../../state";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Item } from "../../components/Item";
 
 type ItemType = {
@@ -26,6 +26,7 @@ type ItemType = {
 function ItemDetails() {
   const dispatch = useDispatch();
   const { itemId } = useParams();
+  const navigate = useNavigate();
   const [value, setValue] = useState("description");
   const [count, setCount] = useState(1);
   const [item, setItem] = useState<ItemType>(null as never);
@@ -42,6 +43,7 @@ function ItemDetails() {
     );
 
     const itemJson = await item.json();
+
     setItem(itemJson.data);
   }
 
@@ -55,13 +57,37 @@ function ItemDetails() {
     setItems(itemsJson.data);
   }
 
+  function handlePrevOrNext(
+    itemId: string | undefined,
+    action: "prev" | "next"
+  ) {
+    if (itemId) {
+      const actions = {
+        prev: () => navigate(`/item/${items[index - 1].id}`),
+        next: () => navigate(`/item/${items[index + 1].id}`),
+      };
+
+      const index = items.findIndex((item) => item.id === Number(itemId));
+
+      if (index === 0 && action === "prev") {
+        navigate(`/item/${items[items.length - 1].id}`);
+        return;
+      }
+      if (index === items.length - 1 && action === "next") {
+        navigate(`/item/${items[0].id}`);
+        return;
+      }
+      actions[action]();
+    }
+  }
+
   useEffect(() => {
     getItem();
     getItems();
   }, [itemId]);
 
   return (
-    <Box width="80%" m="80px auto">
+    <Box width="80%" m="60px auto" paddingY={5}>
       <Box display="flex" flexWrap="wrap" columnGap="40px">
         {/* IMAGES */}
         <Box flex="1 1 40%" mb="40px">
@@ -78,7 +104,20 @@ function ItemDetails() {
         <Box flex="1 1 50%" mb="40px">
           <Box display="flex" justifyContent="space-between">
             <Box>Home/Item</Box>
-            <Box>Prev Next</Box>
+            <Box display="flex" gap="8px">
+              <Typography
+                onClick={() => handlePrevOrNext(itemId, "prev")}
+                sx={{ cursor: "pointer" }}
+              >
+                Prev
+              </Typography>{" "}
+              <Typography
+                onClick={() => handlePrevOrNext(itemId, "next")}
+                sx={{ cursor: "pointer" }}
+              >
+                Próximo
+              </Typography>
+            </Box>
           </Box>
 
           <Box m="65px 0 25px 0">
@@ -116,16 +155,16 @@ function ItemDetails() {
               }}
               onClick={() => dispatch(addToCart({ item: { ...item, count } }))}
             >
-              ADD TO CART
+              ADICIONAR
             </Button>
           </Box>
 
           <Box>
             <Box m="20px 0 5px 0" display="flex">
-              <FavoriteBorderOutlinedIcon />
-              <Typography sx={{ ml: "5px" }}>ADD TO WISHLIST</Typography>
+              {/* <FavoriteBorderOutlinedIcon />
+              <Typography sx={{ ml: "5px" }}>ADD TO WISHLIST</Typography> */}
             </Box>
-            <Typography>CATEGORIES: {item?.attributes?.category}</Typography>
+            <Typography>CATEGORIA: {item?.attributes?.category}</Typography>
           </Box>
         </Box>
       </Box>
@@ -133,7 +172,7 @@ function ItemDetails() {
       {/* INFORMATION */}
       <Box m="20px 0">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="DESCRIPTION" value="description" />
+          <Tab label="DESCRIÇÃO" value="description" />
           <Tab label="REVIEWS" value="reviews" />
         </Tabs>
       </Box>
@@ -147,7 +186,7 @@ function ItemDetails() {
       {/* RELATED ITEMS */}
       <Box mt="50px" width="100%">
         <Typography variant="h3" fontWeight="bold">
-          Related Products
+          Produtos relacionados
         </Typography>
         <Box
           mt="20px"
