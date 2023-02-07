@@ -7,7 +7,7 @@ module.exports = ({ env }) => ({
       apiToken: "p4KPHEHaYdI2ksYW9W1r1816",
       appFilter: "e-commerce",
       teamFilter: "",
-      roles: ["strapi-super-admin", "strapi-editor", "strapi-author"],
+      roles: [],
     },
   },
 });
