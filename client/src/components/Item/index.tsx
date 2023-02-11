@@ -105,7 +105,12 @@ function Item({ item }: ItemProps) {
             .replace(/^./, (str: string) => str.toUpperCase())}
         </Typography>
         <Typography>{name}</Typography>
-        <Typography fontWeight="bold">${price}</Typography>
+        <Typography fontWeight="bold">
+          {price.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </Typography>
       </Box>
     </Box>
   );

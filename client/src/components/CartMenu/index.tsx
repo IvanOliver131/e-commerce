@@ -134,7 +134,10 @@ function CartMenu() {
                       </Box>
                       {/* PRICE */}
                       <Typography fontWeight="BOLD">
-                        ${item.attributes.price}
+                        {item.attributes.price.toLocaleString("pt-BR", {
+                          style: "currency",
+                          currency: "BRL",
+                        })}
                       </Typography>
                     </FlexBox>
                   </Box>
@@ -148,7 +151,12 @@ function CartMenu() {
           <Box m="20px 0">
             <FlexBox m="20px 0">
               <Typography fontWeight="bold">SUBTOTAL</Typography>
-              <Typography fontWeight="bold">${totalPrice}</Typography>
+              <Typography fontWeight="bold">
+                {totalPrice.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </Typography>
             </FlexBox>
             <Button
               sx={{

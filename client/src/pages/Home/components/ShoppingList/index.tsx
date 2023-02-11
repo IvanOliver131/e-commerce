@@ -89,7 +89,7 @@ function ShoppingList() {
         <Tab label="ALL" value="all" />
         <Tab label="SMASH" value="smash" />
         <Tab label="SMOKED" value="smoked" />
-        <Tab label="PORTIONS" value="portions" />]
+        <Tab label="PORÇÕES" value="portions" />]
         <Tab label="DRINKS" value="drinks" />
       </Tabs>
       <Box

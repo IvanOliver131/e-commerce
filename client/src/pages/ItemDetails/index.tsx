@@ -103,7 +103,12 @@ function ItemDetails() {
         {/* ACTIONS */}
         <Box flex="1 1 50%" mb="40px">
           <Box display="flex" justifyContent="space-between">
-            <Box>Home/Item</Box>
+            <Box
+              onClick={() => navigate("/")}
+              sx={{ ":hover": { cursor: "pointer", fontWeight: "bold" } }}
+            >
+              Home/Item
+            </Box>
             <Box display="flex" gap="8px">
               <Typography
                 onClick={() => handlePrevOrNext(itemId, "prev")}
@@ -122,7 +127,12 @@ function ItemDetails() {
 
           <Box m="65px 0 25px 0">
             <Typography variant="h3">{item?.attributes?.name}</Typography>
-            <Typography>${item?.attributes?.price}</Typography>
+            <Typography sx={{ mt: "20px" }}>
+              {item?.attributes?.price.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </Typography>
             <Typography sx={{ mt: "20px" }}>
               {item?.attributes?.longDescription}
             </Typography>

@@ -29,78 +29,31 @@ type MyState = {
 
 const initialValues = {
   billingAddress: {
-    firstName: "",
-    lastName: "",
-    country: "",
-    street1: "",
-    street2: "",
-    city: "",
-    state: "",
-    zipCode: "",
+    name: "",
+    street: "",
+    number: "",
+    complement: "",
+    neighborhood: "",
   },
-  shippingAddress: {
-    isSameAddress: true,
-    firstName: "",
-    lastName: "",
-    country: "",
-    street1: "",
-    street2: "",
-    city: "",
-    state: "",
-    zipCode: "",
-  },
-  email: "",
   phoneNumber: "",
+  paymentForm: "",
+  payment: "",
 };
 
 const checkoutSchema = [
   yup.object().shape({
     billingAddress: yup.object().shape({
-      firstName: yup.string().required("required"),
-      lastName: yup.string().required("required"),
-      country: yup.string().required("required"),
-      street1: yup.string().required("required"),
-      street2: yup.string(),
-      city: yup.string().required("required"),
-      state: yup.string().required("required"),
-      zipCode: yup.string().required("required"),
-    }),
-    shippingAddress: yup.object().shape({
-      isSameAddress: yup.boolean(),
-      firstName: yup.string().when("isSameAddress", {
-        is: false,
-        then: yup.string().required("required"),
-      }),
-      lastName: yup.string().when("isSameAddress", {
-        is: false,
-        then: yup.string().required("required"),
-      }),
-      country: yup.string().when("isSameAddress", {
-        is: false,
-        then: yup.string().required("required"),
-      }),
-      street1: yup.string().when("isSameAddress", {
-        is: false,
-        then: yup.string().required("required"),
-      }),
-      street2: yup.string(),
-      city: yup.string().when("isSameAddress", {
-        is: false,
-        then: yup.string().required("required"),
-      }),
-      state: yup.string().when("isSameAddress", {
-        is: false,
-        then: yup.string().required("required"),
-      }),
-      zipCode: yup.string().when("isSameAddress", {
-        is: false,
-        then: yup.string().required("required"),
-      }),
+      name: yup.string().required("required"),
+      street: yup.string().required("required"),
+      number: yup.string().required("required"),
+      complement: yup.string().required("required"),
+      neighborhood: yup.string().required("required"),
     }),
   }),
   yup.object().shape({
-    email: yup.string().required("required"),
     phoneNumber: yup.string().required("required"),
+    paymentForm: yup.string().required("required"),
+    payment: yup.string().required("required"),
   }),
 ];
 
@@ -164,6 +117,7 @@ function Checkout() {
           <StepLabel>Payment</StepLabel>
         </Step>
       </Stepper>
+
       <Box>
         <Formik
           onSubmit={handleFormSubmit}
@@ -190,7 +144,7 @@ function Checkout() {
                   setFieldValue={setFieldValue}
                 />
               )}
-              {isSecondStep && (
+              {!isSecondStep && (
                 <Payment
                   values={values}
                   errors={errors}
@@ -214,7 +168,7 @@ function Checkout() {
                     }}
                     onClick={() => setActiveStep(activeStep - 1)}
                   >
-                    Back
+                    VOLTAR
                   </Button>
                 )}
                 <Button
@@ -230,7 +184,7 @@ function Checkout() {
                     padding: "15px 40px",
                   }}
                 >
-                  {!isSecondStep ? "Next" : "Place Order"}
+                  {!isSecondStep ? "PRÓXIMO" : "ORDEM DE PAGAMENTO"}
                 </Button>
               </Box>
             </form>
