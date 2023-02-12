@@ -8,9 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import ReactInputMask from "react-input-mask";
+import { ChangeEvent } from "react";
 
 import { useSelector } from "react-redux";
+import { currencyMask } from "../../../../utils/currencyMask";
 
 interface PaymentProps {
   values: any;
@@ -107,7 +108,9 @@ function Payment({
             type="text"
             label="Pagamento"
             onBlur={handleBlur}
-            onChange={handleChange}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              handleChange(currencyMask(event))
+            }
             value={values.payment}
             name="payment"
             error={!!touched.payment && !!errors.payment}
@@ -116,23 +119,6 @@ function Payment({
           />
         )}
       </Box>
-
-      {/* <ReactInputMask mask="R$ 999.99"> fazer uma mascara
-        {() => (
-          <TextField
-            fullWidth
-            type="text"
-            label="Pagamento"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.payment}
-            name="payment"
-            error={!!touched.payment && !!errors.payment}
-            helperText={touched.payment && errors.payment}
-            sx={{ gridColumn: "span 4", marginBottom: "15px" }}
-          />
-        )}
-      </ReactInputMask> */}
 
       <FlexBox m="20px 0">
         <Typography fontWeight="bold">SUBTOTAL</Typography>
